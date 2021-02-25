@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "collections",
+  "info": {
+    "name": "collection",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "questions": {
+      "collection": "question",
+      "via": "collections",
+      "dominant": true
+    },
+    "public": {
+      "type": "boolean"
+    },
+    "author": {
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "collections"
+    }
+  }
+}

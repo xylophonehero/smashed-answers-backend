@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "question-sessions",
+  "info": {
+    "name": "Question Session",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "correct": {
+      "type": "boolean"
+    },
+    "like": {
+      "type": "integer",
+      "max": 1,
+      "min": -1
+    },
+    "question": {
+      "via": "question_sessions",
+      "model": "question"
+    },
+    "user": {
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "question_sessions"
+    }
+  }
+}

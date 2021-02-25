@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/question-sessions",
+      "handler": "question-session.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/question-sessions/count",
+      "handler": "question-session.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/question-sessions/:questionId",
+      "handler": "question-session.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/question-sessions/:questionId",
+      "handler": "question-session.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/question-sessions/:id",
+      "handler": "question-session.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/question-sessions/:questionId",
+      "handler": "question-session.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

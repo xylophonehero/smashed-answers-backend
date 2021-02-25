@@ -1,0 +1,65 @@
+{
+  "kind": "collectionType",
+  "collectionName": "questions",
+  "info": {
+    "name": "question",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "textClue": {
+      "type": "string"
+    },
+    "pictureClue": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "answer": {
+      "type": "string"
+    },
+    "author": {
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "questions"
+    },
+    "likes": {
+      "type": "integer"
+    },
+    "dislikes": {
+      "type": "integer"
+    },
+    "question_sessions": {
+      "collection": "question-session",
+      "via": "question"
+    },
+    "views": {
+      "type": "integer",
+      "default": 0
+    },
+    "correctGuesses": {
+      "type": "integer",
+      "default": 0
+    },
+    "score": {
+      "type": "float"
+    },
+    "difficulty": {
+      "type": "float"
+    },
+    "collections": {
+      "via": "questions",
+      "collection": "collection"
+    }
+  }
+}
