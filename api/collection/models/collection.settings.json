@@ -15,8 +15,8 @@
       "type": "string"
     },
     "questions": {
-      "collection": "question",
       "via": "collections",
+      "collection": "question",
       "dominant": true
     },
     "public": {

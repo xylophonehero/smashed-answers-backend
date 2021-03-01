@@ -58,8 +58,11 @@
       "type": "float"
     },
     "collections": {
-      "via": "questions",
-      "collection": "collection"
+      "collection": "collection",
+      "via": "questions"
+    },
+    "uid": {
+      "type": "uid"
     }
   }
 }

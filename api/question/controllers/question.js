@@ -1,4 +1,5 @@
 const { parseMultipartData, sanitizeEntity } = require('strapi-utils');
+const { nanoid } = require('nanoid')
 
 module.exports = {
   async create(ctx)
@@ -18,7 +19,9 @@ module.exports = {
 
       const { user } = ctx.state
 
-      entity = await strapi.services.question.create({ ...data, ...{ author: user } }, { files })
+      const uid = nanoid()
+
+      entity = await strapi.services.question.create({ ...data, ...{ author: user }, ...{ uid } }, { files })
     } else
     {
       ctx.throw(400, "Please use multipart/form-data")
@@ -100,11 +103,13 @@ module.exports = {
   {
     const { user } = ctx.state
 
+    const [orderBy, direction] = ctx.query._sort.split(':')
+
+    console.log(orderBy)
     if (!user)
     {
       ctx.throw(400, "Log in to find unanswered questions")
     }
-    // const _ = require('lodash')
 
     const knex = strapi.connections.default
     const results = await knex('questions')
@@ -112,10 +117,9 @@ module.exports = {
       {
         this.select('*').from('question-sessions').whereRaw('question = questions.id').andWhere('user', user.id)
       })
-      .limit(ctx.params._limit)
+      .limit(parseInt(ctx.query._limit))
+      .orderBy(orderBy, direction)
       .select('id')
-    // .limit(ctx.params._limit)
-    // .orderBy()
 
     console.log(results)
 

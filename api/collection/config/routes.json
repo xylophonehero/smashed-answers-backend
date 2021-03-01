@@ -10,7 +10,23 @@
     },
     {
       "method": "GET",
+      "path": "/collections/user",
+      "handler": "collection.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/collections/count",
+      "handler": "collection.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/collections/user/count",
       "handler": "collection.count",
       "config": {
         "policies": []
